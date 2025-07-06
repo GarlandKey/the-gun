@@ -1,4 +1,4 @@
-Proprietary Game License Agreement
+# Proprietary Game License Agreement
 
 © Garland Key 2025
 
@@ -48,5 +48,7 @@ This Agreement shall be governed by and construed in accordance with the laws of
 By downloading, installing, or using the Software, you acknowledge that you have read, understand, and agree to be bound by the terms and conditions of this Agreement.
 
 Garland Key
+
 garlandkey@pm.me
+
 07/06/2025
