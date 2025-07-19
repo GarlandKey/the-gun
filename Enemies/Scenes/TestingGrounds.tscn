@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2dwekbhaia1u"]
+
+[ext_resource type="PackedScene" uid="uid://3qckuqwuxquk" path="res://Enemies/Scenes/RedBoi.tscn" id="1_rbv4u"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6v0ns"]
+
+[sub_resource type="Sky" id="Sky_bn16w"]
+sky_material = SubResource("PhysicalSkyMaterial_6v0ns")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_g7qdh"]
+background_mode = 2
+sky = SubResource("Sky_bn16w")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.5, -2.18557e-08, 0, -4.37114e-08, 1, -0.5, 0.866025, 3.78552e-08, 0, 0, 0)
+light_color = Color(1, 0.968627, 0.85098, 1)
+light_energy = 8.0
+light_angular_distance = 0.5
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g7qdh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.879806, 0.475332, 0, -0.475332, 0.879806, 0, 13.148, 14.8372)
+
+[node name="RedBoi" parent="." instance=ExtResource("1_rbv4u")]
