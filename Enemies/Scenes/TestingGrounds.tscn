@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2dwekbhaia1u"]
 
-[ext_resource type="PackedScene" uid="uid://3qckuqwuxquk" path="res://Enemies/Scenes/RedBoi.tscn" id="1_rbv4u"]
+[ext_resource type="PackedScene" uid="uid://cecs854lb7hmi" path="res://Enemies/Scenes/RedBoi.tscn" id="1_rbv4u"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6v0ns"]
 
