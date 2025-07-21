@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2dwekbhaia1u"]
+[gd_scene load_steps=8 format=3 uid="uid://d2dwekbhaia1u"]
 
 [ext_resource type="PackedScene" uid="uid://b4p1l5m2n3o4p" path="res://UI/crosshair.tscn" id="1_6v0ns"]
 [ext_resource type="PackedScene" uid="uid://bfmy0i5dqhhvy" path="res://Player/Scenes/player.tscn" id="2_6v0ns"]
+[ext_resource type="PackedScene" uid="uid://c6ftos1k82bwd" path="res://Enemies/Scenes/boomba.tscn" id="3_bn16w"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6v0ns"]
 
@@ -37,3 +38,6 @@ material = SubResource("StandardMaterial3D_rbv4u")
 [node name="Crosshair" parent="." instance=ExtResource("1_6v0ns")]
 
 [node name="Player" parent="." instance=ExtResource("2_6v0ns")]
+
+[node name="Boomba" parent="." instance=ExtResource("3_bn16w")]
+script = null

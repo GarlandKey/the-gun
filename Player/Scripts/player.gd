@@ -7,7 +7,7 @@ extends CharacterBody3D
 @onready var aim_raycast: RayCast3D = $CameraPivot/Camera3D/AimRayCast
 
 # Bullet scene to spawn
-const BULLET_SCENE = preload("res://Player/Scenes/bullet.tscn")
+const BULLET_SCENE = preload("res://Bullets/Scenes/bullet.tscn")
 const CROSSHAIR_SCENE = preload("res://UI/crosshair.tscn")
 
 const SPEED = 10.0
@@ -82,11 +82,11 @@ func shoot():
 	# Create bullet instance
 	var bullet = BULLET_SCENE.instantiate()
 	
-	# Set the shooter reference to prevent self-hits
-	bullet.shooter = self
-	
 	# Add bullet to the scene tree
 	get_tree().current_scene.add_child(bullet)
+	
+	# Set the shooter reference to prevent self-hits (after adding to scene)
+	bullet.shooter = self
 	
 	# Spawn bullet from center of player capsule (height is 3, so center is 1.5 up)
 	bullet.global_position = global_position + Vector3.UP * 1.5

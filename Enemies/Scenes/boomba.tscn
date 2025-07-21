@@ -1,0 +1,217 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6ftos1k82bwd"]
+
+[ext_resource type="Script" uid="uid://bl0lodhs30b38" path="res://Enemies/Scripts/boomba.gd" id="1_c5yco"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ixdh"]
+albedo_color = Color(0.904585, 5.41471e-06, 1.15514e-06, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xpect"]
+material = SubResource("StandardMaterial3D_0ixdh")
+radius = 4.0
+height = 2.0
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5yco"]
+albedo_color = Color(0.548588, 0.548588, 0.548588, 1)
+metallic = 1.0
+metallic_specular = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_456fx"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k35n2"]
+radius = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rpdbm"]
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_456fx"]
+resource_name = "Ascend"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.98)
+}
+
+[sub_resource type="Animation" id="Animation_bd228"]
+resource_name = "Descend"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_our0g"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_our0g"]
+_data = {
+&"Ascend": SubResource("Animation_456fx"),
+&"Descend": SubResource("Animation_bd228"),
+&"RESET": SubResource("Animation_our0g")
+}
+
+[node name="Boomba" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+collision_layer = 8
+script = ExtResource("1_c5yco")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_xpect")
+
+[node name="barrel" type="CSGCombiner3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="MeshInstance3D/barrel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 2.5)
+radius = 0.75
+height = 3.0
+sides = 35
+material = SubResource("StandardMaterial3D_c5yco")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="MeshInstance3D/barrel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 2.5)
+operation = 2
+radius = 0.65
+height = 3.0
+sides = 35
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="MeshInstance3D/barrel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.963912, 2.73309)
+radius = 0.65
+sides = 35
+material = SubResource("StandardMaterial3D_456fx")
+
+[node name="barrel2" type="CSGCombiner3D" parent="MeshInstance3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="MeshInstance3D/barrel2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 2.5)
+radius = 0.75
+height = 3.0
+sides = 35
+material = SubResource("StandardMaterial3D_c5yco")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="MeshInstance3D/barrel2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 2.5)
+operation = 2
+radius = 0.65
+height = 3.0
+sides = 35
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="MeshInstance3D/barrel2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.024755, 0.963912, 2.83489)
+radius = 0.65
+height = 2.20361
+sides = 35
+material = SubResource("StandardMaterial3D_456fx")
+
+[node name="barrel3" type="CSGCombiner3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="MeshInstance3D/barrel3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 2.5)
+radius = 0.75
+height = 3.0
+sides = 35
+material = SubResource("StandardMaterial3D_c5yco")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="MeshInstance3D/barrel3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 2.5)
+operation = 2
+radius = 0.65
+height = 3.0
+sides = 35
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="MeshInstance3D/barrel3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.963912, 2.73309)
+radius = 0.65
+sides = 35
+material = SubResource("StandardMaterial3D_456fx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_k35n2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_rpdbm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_our0g")
+}
