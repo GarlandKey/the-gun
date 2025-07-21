@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="the-gun"
+config/name="first-try"
 config/description="This is a 3rd person shooter for the Q2 2025 Pirate Software Game Jam."
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
