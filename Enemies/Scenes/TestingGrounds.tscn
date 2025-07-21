@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2dwekbhaia1u"]
+[gd_scene load_steps=7 format=3 uid="uid://d2dwekbhaia1u"]
 
+[ext_resource type="PackedScene" uid="uid://b4p1l5m2n3o4p" path="res://UI/crosshair.tscn" id="1_6v0ns"]
 [ext_resource type="PackedScene" uid="uid://bfmy0i5dqhhvy" path="res://Player/Scenes/player.tscn" id="2_6v0ns"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6v0ns"]
@@ -32,5 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 size = Vector3(64, 1, 64)
 material = SubResource("StandardMaterial3D_rbv4u")
+
+[node name="Crosshair" parent="." instance=ExtResource("1_6v0ns")]
 
 [node name="Player" parent="." instance=ExtResource("2_6v0ns")]

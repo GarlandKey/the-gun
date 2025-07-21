@@ -8,6 +8,7 @@ extends CharacterBody3D
 
 # Bullet scene to spawn
 const BULLET_SCENE = preload("res://Player/Scenes/bullet.tscn")
+const CROSSHAIR_SCENE = preload("res://UI/crosshair.tscn")
 
 const SPEED = 10.0
 const RUN_SPEED = 20.0
@@ -21,6 +22,10 @@ var dash_timer = 0.0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	add_to_group("player")
+	
+	# Add crosshair to the UI
+	var crosshair = CROSSHAIR_SCENE.instantiate()
+	get_tree().current_scene.add_child(crosshair)
 
 func _input(event):
 	if Input.is_action_just_pressed("quit"):
