@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2dwekbhaia1u"]
+[gd_scene load_steps=6 format=3 uid="uid://d2dwekbhaia1u"]
 
-[ext_resource type="PackedScene" uid="uid://cecs854lb7hmi" path="res://Enemies/Scenes/RedBoi.tscn" id="1_rbv4u"]
+[ext_resource type="PackedScene" uid="uid://bfmy0i5dqhhvy" path="res://Player/Scenes/player.tscn" id="2_6v0ns"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6v0ns"]
 
@@ -11,6 +11,9 @@ process_mode = 1
 [sub_resource type="Environment" id="Environment_g7qdh"]
 background_mode = 2
 sky = SubResource("Sky_bn16w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbv4u"]
+albedo_color = Color(0.239122, 0.143438, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -24,7 +27,10 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g7qdh")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.879806, 0.475332, 0, -0.475332, 0.879806, 0, 13.148, 14.8372)
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(64, 1, 64)
+material = SubResource("StandardMaterial3D_rbv4u")
 
-[node name="RedBoi" parent="." instance=ExtResource("1_rbv4u")]
+[node name="Player" parent="." instance=ExtResource("2_6v0ns")]
