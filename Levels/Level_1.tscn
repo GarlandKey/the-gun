@@ -1,0 +1,1427 @@
+[gd_scene load_steps=19 format=3 uid="uid://cjnr20yym2t2i"]
+
+[ext_resource type="Material" uid="uid://c0mwr7ij87c8n" path="res://Levels/Materials/BoxBrownMaterial.tres" id="1_ntpbt"]
+[ext_resource type="Material" uid="uid://dq15nkct6thfs" path="res://Levels/Materials/ElectricBoxBlue.tres" id="1_waoec"]
+[ext_resource type="Material" uid="uid://bjdl4k17vov0e" path="res://Levels/Materials/WallLightBrownMaterial.tres" id="1_x75k1"]
+[ext_resource type="Material" uid="uid://d3bcrhw4ey30" path="res://Levels/Materials/LockPinkMaterial.tres" id="2_43ny2"]
+[ext_resource type="Material" uid="uid://c2xib5eq1chg" path="res://Levels/Materials/BarrelGreenMaterial.tres" id="2_uq0sc"]
+[ext_resource type="Material" uid="uid://vwg54gyw6qan" path="res://Levels/Materials/DoorUnlockedGreen.tres" id="2_wsn87"]
+[ext_resource type="Material" uid="uid://cix5bsbbdv5qn" path="res://Levels/Materials/WhiteMaterial.tres" id="3_ntpbt"]
+[ext_resource type="Material" uid="uid://dln5kkjd0m7k3" path="res://Levels/Materials/LevelExitBlackMaterial.tres" id="4_43ny2"]
+[ext_resource type="Material" uid="uid://dkv5qjnvip7dv" path="res://Levels/Materials/KeyDoorGoldMaterial.tres" id="5_hofu3"]
+[ext_resource type="Material" uid="uid://bfc8hm4ljpaui" path="res://Levels/Materials/WallDarkGreyMaterial.tres" id="6_hofu3"]
+[ext_resource type="Material" uid="uid://ctmfbvdxsfq4j" path="res://Levels/Materials/WallDarkRedMaterial.tres" id="8_wpk6a"]
+[ext_resource type="Material" uid="uid://dxlnqkt0i4ay" path="res://Levels/Materials/WallEchoesRedMaterial.tres" id="9_nmwl1"]
+[ext_resource type="Material" uid="uid://dbsfqbfhydse5" path="res://Levels/Materials/WallMediumGreyMaterial.tres" id="9_wpk6a"]
+[ext_resource type="Material" uid="uid://cty68mrr115og" path="res://Levels/Materials/WallLightGreyMaterial.tres" id="11_c1kre"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2b7vw"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_gilti"]
+sky_material = SubResource("ProceduralSkyMaterial_2b7vw")
+
+[sub_resource type="Environment" id="Environment_yc8as"]
+background_mode = 2
+sky = SubResource("Sky_gilti")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ne224"]
+albedo_color = Color(0.68034, 0.000346734, 0.680335, 1)
+
+[node name="Level_1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yc8as")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="LevelEnvironment" type="Node3D" parent="."]
+
+[node name="room1" type="Node3D" parent="LevelEnvironment"]
+
+[node name="Walls" type="Node3D" parent="LevelEnvironment/room1"]
+
+[node name="room1_wall_center" type="CSGBox3D" parent="LevelEnvironment/room1/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -2.7)
+use_collision = true
+size = Vector3(0.25, 6, 7.5)
+material = ExtResource("1_x75k1")
+
+[node name="room1_wall_right" type="CSGBox3D" parent="LevelEnvironment/room1/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -6)
+use_collision = true
+size = Vector3(0.25, 6, 15)
+material = ExtResource("1_x75k1")
+
+[node name="room1_wall_cleft" type="CSGBox3D" parent="LevelEnvironment/room1/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 3, -6)
+use_collision = true
+size = Vector3(0.25, 6, 15)
+material = ExtResource("1_x75k1")
+
+[node name="room1_wall_rear" type="CSGBox3D" parent="LevelEnvironment/room1/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -13)
+use_collision = true
+size = Vector3(15, 6, 0.25)
+material = ExtResource("1_x75k1")
+
+[node name="room1_wall_frontRight" type="CSGBox3D" parent="LevelEnvironment/room1/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85, 3, 1)
+use_collision = true
+size = Vector3(10.7, 6, 0.25)
+material = ExtResource("1_x75k1")
+
+[node name="room1_wall_frontLeft" type="CSGBox3D" parent="LevelEnvironment/room1/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.62, 3, 1)
+use_collision = true
+size = Vector3(1.7, 6, 0.25)
+material = ExtResource("1_x75k1")
+
+[node name="Obstacles" type="Node3D" parent="LevelEnvironment/room1"]
+
+[node name="room1_box_1" type="CSGBox3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 1, -3)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room1_box_2" type="CSGBox3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 1, -3.8)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room1_box_3" type="CSGBox3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.3, 1, -9.5)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room1_box_4" type="CSGBox3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 0.3, 3, -9.5)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room1_box_5" type="CSGBox3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 1, -5)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room1_box_6" type="CSGBox3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3, 1, -4.8)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room1_box_7" type="CSGBox3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 1, -7.2)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room1_box_8" type="CSGBox3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -10.8, 3, -7.2)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room1_box_9" type="CSGBox3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -10.3, 3, -4.9)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room1_cylinder_1" type="CSGCylinder3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 1.25, -12.2)
+use_collision = true
+radius = 0.75
+height = 2.5
+material = ExtResource("2_uq0sc")
+
+[node name="room1_cylinder_2" type="CSGCylinder3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 1.25, -9.7)
+use_collision = true
+radius = 0.75
+height = 2.5
+material = ExtResource("2_uq0sc")
+
+[node name="room1_cylinder_3" type="CSGCylinder3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.25, -10.7)
+use_collision = true
+radius = 0.75
+height = 2.5
+material = ExtResource("2_uq0sc")
+
+[node name="room1_cylinder_4" type="CSGCylinder3D" parent="LevelEnvironment/room1/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 1.25, -3)
+use_collision = true
+radius = 0.75
+height = 2.5
+material = ExtResource("2_uq0sc")
+
+[node name="Key_Obstacles" type="Node3D" parent="LevelEnvironment/room1"]
+
+[node name="room1_lock_exit" type="CSGBox3D" parent="LevelEnvironment/room1/Key_Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7, 3.9, 0.7)
+use_collision = true
+size = Vector3(1, 1, 0.5)
+material = ExtResource("2_43ny2")
+
+[node name="room1_door_exit" type="CSGBox3D" parent="LevelEnvironment/room1/Key_Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.47, 2.75, 1.1)
+size = Vector3(2.5, 5.5, 0.25)
+material = ExtResource("5_hofu3")
+
+[node name="room2" type="Node3D" parent="LevelEnvironment"]
+
+[node name="Walls" type="Node3D" parent="LevelEnvironment/room2"]
+
+[node name="room2_wall_rearLeft" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 3, 9)
+use_collision = true
+size = Vector3(0.25, 6, 15)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_rearFront" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 16)
+use_collision = true
+size = Vector3(10, 6, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_frontLeft" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 44)
+use_collision = true
+size = Vector3(10, 6, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_exitBack" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, 36.37)
+use_collision = true
+size = Vector3(10, 6, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_electricBoxBack" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37, 3, 26)
+use_collision = true
+size = Vector3(5, 6, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_electricBoxFront" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37, 3, 29)
+use_collision = true
+size = Vector3(5, 6, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_electricBoxFront2" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.77, 3, 27.5)
+use_collision = true
+size = Vector3(0.25, 6, 3)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_right" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.075, 19)
+use_collision = true
+size = Vector3(0.25, 6, 35)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_electricBackLeft" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.075, 20.9)
+use_collision = true
+size = Vector3(0.25, 6, 10)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_electricFrontLeft" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 36.4)
+use_collision = true
+size = Vector3(0.25, 6, 15)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_electricFrontLeft2" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3, 34.25)
+use_collision = true
+size = Vector3(0.25, 6, 14.7)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_stairsTopFront" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4.725, 54)
+use_collision = true
+size = Vector3(10, 6, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_stairsRight" type="CSGPolygon3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 12.25, 10, 45.15)
+use_collision = true
+polygon = PackedVector2Array(-18, -17, 1, 1, 1, -17)
+depth = 0.25
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_stairsLeft" type="CSGPolygon3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 8.25, 10, 45.15)
+use_collision = true
+polygon = PackedVector2Array(-18, -17, 1, 1, 1, -17)
+depth = 0.25
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_B1FrontRight" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -3.5, 54)
+use_collision = true
+size = Vector3(12, 11, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_B1FrontLeft" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.5, 54)
+use_collision = true
+size = Vector3(12, 11, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_B1Rear" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -5.275, 78.7)
+use_collision = true
+size = Vector3(25, 3.5, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_B1CenterRight" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.15, -3.9, 66.9)
+use_collision = true
+size = Vector3(15.8, 6, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_B1CenterLeft" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.749999, -3.9, 66.9)
+use_collision = true
+size = Vector3(5.7, 6, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_B1CenterAboveDoor" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9, 0.35, 66.9)
+use_collision = true
+size = Vector3(6, 3.7, 0.25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_B1Left" type="CSGBox3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -5.025, 66.5)
+use_collision = true
+size = Vector3(0.25, 6, 25)
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_B1Right" type="CSGPolygon3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 22.75, 10, 62.15)
+polygon = PackedVector2Array(-36, -17, 8, -8, 8, -17)
+depth = 0.25
+material = ExtResource("6_hofu3")
+
+[node name="room2_wall_B1Left2" type="CSGPolygon3D" parent="LevelEnvironment/room2/Walls"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -1.75, 10, 62.15)
+polygon = PackedVector2Array(-36, -17, 8, -8, 8, -17)
+depth = 0.25
+material = ExtResource("6_hofu3")
+
+[node name="Obstacles" type="Node3D" parent="LevelEnvironment/room2"]
+
+[node name="room2_box_01" type="CSGBox3D" parent="LevelEnvironment/room2/Obstacles"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -10.8, 1, 10.1)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room2_box_02" type="CSGBox3D" parent="LevelEnvironment/room2/Obstacles"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -7.8, 1, 10.1)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room2_box_05" type="CSGBox3D" parent="LevelEnvironment/room2/Obstacles"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -5.8, 1, 3.1)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room2_box_03" type="CSGBox3D" parent="LevelEnvironment/room2/Obstacles"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -7.8, 3, 10.1)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room2_box_04" type="CSGBox3D" parent="LevelEnvironment/room2/Obstacles"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.8, 1, 13.1)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_ntpbt")
+
+[node name="room2_cylinder_01" type="CSGCylinder3D" parent="LevelEnvironment/room2/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 1.25, 14.3)
+use_collision = true
+radius = 0.75
+height = 2.5
+material = ExtResource("2_uq0sc")
+
+[node name="room2_cylinder_02" type="CSGCylinder3D" parent="LevelEnvironment/room2/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 1.25, 12.3)
+use_collision = true
+radius = 0.75
+height = 2.5
+material = ExtResource("2_uq0sc")
+
+[node name="room2_cylinder_03" type="CSGCylinder3D" parent="LevelEnvironment/room2/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 1.25, 13.3)
+use_collision = true
+radius = 0.75
+height = 2.5
+material = ExtResource("2_uq0sc")
+
+[node name="room2_hazard_electric" type="CSGBox3D" parent="LevelEnvironment/room2/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0249995, 20.9)
+use_collision = true
+size = Vector3(4, 0.1, 10)
+material = ExtResource("1_waoec")
+
+[node name="Key_Obstacles" type="Node3D" parent="LevelEnvironment/room2"]
+
+[node name="room2_electricBox" type="CSGBox3D" parent="LevelEnvironment/room2/Key_Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.4, 3.4, 27.3)
+use_collision = true
+size = Vector3(1, 1, 0.5)
+material = ExtResource("1_waoec")
+
+[node name="room2_door_exit" type="CSGBox3D" parent="LevelEnvironment/room2/Key_Obstacles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.13, 2.75, 42.9)
+size = Vector3(2.5, 5.5, 0.25)
+material = ExtResource("5_hofu3")
+
+[node name="room2_lock_exit" type="CSGBox3D" parent="LevelEnvironment/room2/Key_Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -4.5, 78.4)
+use_collision = true
+size = Vector3(1, 1, 0.5)
+material = ExtResource("2_43ny2")
+
+[node name="room2_B1_door" type="CSGBox3D" parent="LevelEnvironment/room2/Key_Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93, -4.2235, 67.1)
+size = Vector3(2.7, 5.5, 0.25)
+material = ExtResource("2_wsn87")
+
+[node name="Workbench" type="CSGBox3D" parent="LevelEnvironment/room2/Key_Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.875, 6)
+use_collision = true
+size = Vector3(2, 1.75, 4)
+material = SubResource("StandardMaterial3D_ne224")
+
+[node name="room3" type="Node3D" parent="LevelEnvironment"]
+
+[node name="Walls" type="Node3D" parent="LevelEnvironment/room3"]
+
+[node name="room3_wall_01" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.85, 3, 44.3)
+use_collision = true
+size = Vector3(23.7, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_wall_01b" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 3, 40.5)
+use_collision = true
+size = Vector3(23, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_wall_02" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.15, 3, 44.2)
+use_collision = true
+size = Vector3(23.7, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_wall_03" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6396, 3, 37.9289)
+use_collision = true
+size = Vector3(0.25, 6, 12)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_wall_07" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.6396, 2.05, 16.1289)
+use_collision = true
+size = Vector3(0.25, 4.1, 32)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_wall_08" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6396, 2.2, 16.1289)
+use_collision = true
+size = Vector3(0.25, 4.4, 32)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_wall_04" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.9396, 3, 36.3289)
+use_collision = true
+size = Vector3(0.25, 6, 8.6)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_wall_05" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.25, 3, 32)
+use_collision = true
+size = Vector3(9.5, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_wall_06" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.25, 3, 32)
+use_collision = true
+size = Vector3(9.5, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_wall_09" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.65, 3, 0)
+use_collision = true
+size = Vector3(24.3, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_F2_wall_01" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 5.95, -3.8)
+size = Vector3(36, 14.1, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_F2_wall_02" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.7, 6.35, 13.2)
+size = Vector3(36, 13.3, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_F2_wall_03" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 55, 6.4, 13.2)
+size = Vector3(36, 13.2, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_F2_wall_04" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 9.8, 27.9)
+size = Vector3(36, 7.6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_F2_wall_05" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, 7.3, 27.9)
+size = Vector3(4.8, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_F2_wall_06" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 7.3, 27.9)
+size = Vector3(4.8, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_F2_wall_07" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.5, 7.3, 29.6)
+size = Vector3(4.8, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="room3_F2_wall_08" type="CSGBox3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 49.5, 7.1, 29.6)
+size = Vector3(4.8, 6, 0.25)
+material = ExtResource("9_nmwl1")
+
+[node name="Railing" type="Node3D" parent="LevelEnvironment/room3/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.7, 5.8, 14.2)
+
+[node name="room3_F2_wall_05" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_08" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.25, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_09" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_06" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_07" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_72" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_73" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0.25, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_74" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_75" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_76" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_77" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 0, -1.90735e-06)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_78" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 0.25, -1.90735e-06)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_79" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, -0.35, -1.90735e-06)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_80" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.75, -0.3, -1.90735e-06)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_81" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85, -0.3, -1.90735e-06)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_10" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_11" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_12" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_13" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_14" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.25, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_15" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_16" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_17" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_18" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0.25, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_19" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_20" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_21" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_22" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0.25, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_23" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_24" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_25" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_109" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.800001, 0, 24)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_110" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.800001, -0.35, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_111" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_112" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149999, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_113" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.25, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_114" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 24)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_115" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.35, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_116" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_117" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0.25, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_118" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 24)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_119" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, -0.35, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_120" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_141" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.15, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_142" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 0.25, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_143" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 0, 24)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_144" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, -0.35, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_145" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.15, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_146" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.25, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_147" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7, 0.25, 24)
+size = Vector3(0.7, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_148" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7, 0, 24)
+size = Vector3(0.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_149" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7, -0.35, 24)
+size = Vector3(0.7, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_150" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.15, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_121" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0.25, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_122" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0, 24)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_123" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, -0.35, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_124" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.15, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_125" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 0, 24)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_126" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, -0.35, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_127" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.75, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_128" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_129" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 0.25, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_130" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 0, 24)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_131" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, -0.35, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_132" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_133" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, 0.25, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_134" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, 0, 24)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_135" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, -0.35, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_136" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_137" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0.25, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_138" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0, 24)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_139" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, -0.35, 24)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_140" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85, -0.3, 24)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_26" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_27" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0.25, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_28" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_29" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_30" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_31" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_32" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_33" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_34" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_35" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 0.25, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_36" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_37" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_38" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_39" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2, 0.25, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_40" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_41" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_42" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_43" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2, 0.25, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_44" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2, 0, 0)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_45" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2, -0.35, 0)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_46" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.15, -0.3, 0)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_47" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 7.12144)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_48" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 7.12144)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_49" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 7.12144)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_50" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 8.07143)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_51" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 6.17143)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_52" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 7.12144)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_53" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 7.12144)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_54" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 8.07143)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_68" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 9.12144)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_69" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 9.12144)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_70" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 9.12144)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_71" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 10.0714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_55" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 6.17143)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_56" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 5.12143)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_57" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 5.12143)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_58" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 5.12143)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_59" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 4.17143)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_60" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 3.12143)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_61" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 3.12143)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_62" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 3.12143)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_63" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 2.17143)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_64" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 1.12143)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_65" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 1.12143)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_66" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 1.12143)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_67" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 0.171432)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_82" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 20.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_83" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 21.6714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_84" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 19.7714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_85" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 20.7214)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_86" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 20.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_87" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 21.6714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_88" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 22.7214)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_89" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 22.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_90" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 22.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_91" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 23.6714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_92" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 19.7714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_93" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 18.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_94" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 18.7214)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_95" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 18.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_96" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 17.7714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_97" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 16.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_98" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 16.7214)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_99" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 16.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_100" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 15.7714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_101" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 14.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_102" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 14.7214)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_103" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 14.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_104" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 13.7714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_105" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0.25, 12.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_106" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, 0, 12.7214)
+size = Vector3(1.5, 1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_107" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.35, 12.7214)
+size = Vector3(1.9, 0.1, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="room3_F2_wall_108" type="CSGBox3D" parent="LevelEnvironment/room3/Walls/Railing"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.3214, -0.3, 11.7714)
+size = Vector3(0.2, 2, 0.15)
+material = ExtResource("8_wpk6a")
+
+[node name="Obstacles" type="Node3D" parent="LevelEnvironment/room3"]
+
+[node name="room3_column_01" type="CSGCylinder3D" parent="LevelEnvironment/room3/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.3, 7.5, 27)
+use_collision = true
+radius = 1.5
+height = 15.0
+material = ExtResource("3_ntpbt")
+
+[node name="room3_column_02" type="CSGCylinder3D" parent="LevelEnvironment/room3/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.3, 7.5, 17)
+use_collision = true
+radius = 1.5
+height = 15.0
+material = ExtResource("3_ntpbt")
+
+[node name="room3_column_03" type="CSGCylinder3D" parent="LevelEnvironment/room3/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.3, 7.5, 7)
+use_collision = true
+radius = 1.5
+height = 15.0
+material = ExtResource("3_ntpbt")
+
+[node name="room3_column_04" type="CSGCylinder3D" parent="LevelEnvironment/room3/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3, 7.5, 0)
+use_collision = true
+radius = 1.5
+height = 15.0
+material = ExtResource("3_ntpbt")
+
+[node name="room3_column_05" type="CSGCylinder3D" parent="LevelEnvironment/room3/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3, 7.5, 27)
+use_collision = true
+radius = 1.5
+height = 15.0
+material = ExtResource("3_ntpbt")
+
+[node name="room3_column_06" type="CSGCylinder3D" parent="LevelEnvironment/room3/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3, 7.5, 17)
+use_collision = true
+radius = 1.5
+height = 15.0
+material = ExtResource("3_ntpbt")
+
+[node name="room3_column_07" type="CSGCylinder3D" parent="LevelEnvironment/room3/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3, 7.5, 7)
+use_collision = true
+radius = 1.5
+height = 15.0
+material = ExtResource("3_ntpbt")
+
+[node name="Key_Obstacles" type="Node3D" parent="LevelEnvironment/room3"]
+
+[node name="room3_lockedDoor_01" type="CSGBox3D" parent="LevelEnvironment/room3/Key_Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.98, 3, 44.1)
+size = Vector3(2.6, 6, 0.25)
+material = ExtResource("5_hofu3")
+
+[node name="room3_LevelExit" type="CSGBox3D" parent="LevelEnvironment/room3/Key_Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.38, 10.55, 68.1)
+size = Vector3(9.8, 7.1, 0.25)
+material = ExtResource("4_43ny2")
+
+[node name="room3_lock_01_exit" type="CSGBox3D" parent="LevelEnvironment/room3/Key_Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, 7.7, 27.7)
+use_collision = true
+size = Vector3(1, 1, 0.5)
+material = ExtResource("2_43ny2")
+
+[node name="room4" type="Node3D" parent="LevelEnvironment"]
+
+[node name="Walls" type="Node3D" parent="LevelEnvironment/room4"]
+
+[node name="room4_wall_Left" type="CSGPolygon3D" parent="LevelEnvironment/room4/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34, 0, 44.4)
+polygon = PackedVector2Array(0, 6, 25, 15, 25, 0, 0, 0)
+depth = 0.25
+material = ExtResource("9_wpk6a")
+
+[node name="room4_wall_Right" type="CSGPolygon3D" parent="LevelEnvironment/room4/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 0, 44.4)
+polygon = PackedVector2Array(0, 6, 25, 15, 25, 0, 0, 0)
+depth = 0.25
+material = ExtResource("9_wpk6a")
+
+[node name="Floors" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Floors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -0.5, 17.1)
+use_collision = true
+size = Vector3(79, 1, 60.8)
+material = ExtResource("11_c1kre")
+
+[node name="room2_FloorB1" type="CSGBox3D" parent="Floors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -7.1, 66.4)
+use_collision = true
+size = Vector3(25, 0.253, 25)
+material = ExtResource("11_c1kre")
+
+[node name="room3_F2_Floor_1" type="CSGBox3D" parent="Floors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8, 4.2, -1.9)
+use_collision = true
+size = Vector3(33.2, 0.25, 4)
+material = ExtResource("11_c1kre")
+
+[node name="room3_F2_Floor_2" type="CSGBox3D" parent="Floors"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.2, 4.2, 12.5)
+use_collision = true
+size = Vector3(32.7, 0.25, 5.5)
+material = ExtResource("11_c1kre")
+
+[node name="room3_F2_Floor_3" type="CSGBox3D" parent="Floors"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23.25, 4.2, 12.5)
+use_collision = true
+size = Vector3(32.7, 0.25, 5)
+material = ExtResource("11_c1kre")
+
+[node name="room3_staircase_02" type="CSGPolygon3D" parent="Floors"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 39, 4.76837e-07, 20.4)
+use_collision = true
+polygon = PackedVector2Array(6, 0, 13.2, 4.4, 13.3, -0.2)
+depth = 3.0
+material = ExtResource("11_c1kre")
+
+[node name="room3_staircase_03" type="CSGPolygon3D" parent="Floors"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 37, 4.76837e-07, 4.3)
+use_collision = true
+polygon = PackedVector2Array(6, 0, 12.4, 4.3, 12.5, 0)
+depth = 3.0
+material = ExtResource("11_c1kre")
+
+[node name="room2_stairs_toB1" type="CSGPolygon3D" parent="Floors"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 12, -1, 48.5)
+use_collision = true
+polygon = PackedVector2Array(-12, -6, 1, 1, 1, -6)
+depth = 4.0
+material = ExtResource("11_c1kre")
+
+[node name="room4_stairs_toExit" type="CSGPolygon3D" parent="Floors"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34, 0, 47.4)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 21, 8, 1, 0)
+depth = 6.0
+material = ExtResource("11_c1kre")
+
+[node name="Ceilings" type="Node3D" parent="."]
+
+[node name="Ceiling" type="CSGBox3D" parent="Ceilings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 19.5)
+use_collision = true
+size = Vector3(25, 1, 65)
+material = ExtResource("4_43ny2")
+
+[node name="Ceiling2" type="CSGBox3D" parent="Ceilings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 6, 40)
+use_collision = true
+size = Vector3(49, 1, 24)
+material = ExtResource("4_43ny2")
+
+[node name="Ceiling3" type="CSGBox3D" parent="Ceilings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 13, 13.5)
+use_collision = true
+size = Vector3(49, 1, 37)
+material = ExtResource("4_43ny2")
+
+[node name="CeilingExit" type="CSGPolygon3D" parent="Ceilings"]
+transform = Transform3D(-4.37114e-08, 0, -1, -8.74228e-08, -1, 3.82137e-15, -1, 8.74228e-08, 4.37114e-08, 34, 14, 68.4)
+polygon = PackedVector2Array(0, 0, 24, 8, 1, 0)
+depth = 7.0
+material = ExtResource("4_43ny2")
+
+[node name="room2_B1Ceiling" type="CSGPolygon3D" parent="Ceilings"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 23.25, 10.3, 67.15)
+polygon = PackedVector2Array(0, -10, 15, -8, -14, -14)
+depth = 25.0
+material = ExtResource("4_43ny2")
