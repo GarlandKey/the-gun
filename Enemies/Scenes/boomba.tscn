@@ -119,9 +119,8 @@ _data = {
 &"RESET": SubResource("Animation_our0g")
 }
 
-[node name="Boomba" type="CharacterBody3D"]
+[node name="Boomba" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-collision_layer = 8
 script = ExtResource("1_c5yco")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -215,3 +214,6 @@ shape = SubResource("CylinderShape3D_rpdbm")
 libraries = {
 &"": SubResource("AnimationLibrary_our0g")
 }
+
+[node name="GroundRaycast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -100, 0)

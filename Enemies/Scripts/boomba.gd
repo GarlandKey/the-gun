@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Node3D
 
 const SPEED = 3.0
 const ROTATION_SPEED = 2.0
@@ -12,6 +12,7 @@ const BULLET_SCENE = preload("res://Bullets/Scenes/bullet.tscn")
 @onready var barrel3 = $MeshInstance3D/barrel3
 @onready var area_3d = $Area3D
 @onready var animation_player = $AnimationPlayer
+@onready var ground_raycast = $GroundRaycast
 
 var is_animating = false
 
@@ -26,12 +27,17 @@ var shot_timer = 0.0
 var current_health: float
 
 func _ready():
+	print("Boomba _ready() called")
 	# Initialize health
 	current_health = max_health
 	
 	# Find the player
 	player = get_tree().get_first_node_in_group("player")
 	print("Boomba found player: ", player)
+	if not player:
+		print("No player found in group 'player'!")
+		var all_nodes = get_tree().get_nodes_in_group("player")
+		print("All nodes in player group: ", all_nodes)
 	
 	# Connect Area3D signals for damage detection
 	area_3d.body_entered.connect(_on_bullet_hit)
@@ -40,14 +46,7 @@ func _ready():
 	animation_player.animation_started.connect(_on_animation_started)
 	animation_player.animation_finished.connect(_on_animation_finished)
 
-func _physics_process(delta: float) -> void:
-	# Only apply gravity when not animating
-	if not is_animating and not is_on_floor():
-		velocity += get_gravity() * delta
-	elif is_animating:
-		# Clear velocity during animation to let animation control position
-		velocity = Vector3.ZERO
-	
+func _process(delta: float) -> void:
 	if player:
 		# Rotate to face player
 		var direction_to_player = (player.global_position - global_position).normalized()
@@ -74,8 +73,6 @@ func _physics_process(delta: float) -> void:
 				print("Starting burst fire!")
 				is_firing_burst = true
 				shot_timer = 0.0
-	
-	move_and_slide()
 
 func shoot_at_player():
 	if not player:
