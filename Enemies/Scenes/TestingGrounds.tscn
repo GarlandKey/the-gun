@@ -41,4 +41,3 @@ material = SubResource("StandardMaterial3D_rbv4u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 55.9078)
 
 [node name="Boomba" parent="." instance=ExtResource("3_bn16w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
