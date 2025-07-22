@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd6njy65c2k1u"]
+
+[ext_resource type="Script" uid="uid://dxjrp5k5nfvon" path="res://Player.gd" id="1_xhfnw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kne1u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e80uo"]
+albedo_color = Color(0.546597, 0.326316, 0.203569, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xhfnw"]
+radius = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_cxr5p"]
+size = Vector3(0.2, 0.3, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_xhfnw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kpjcp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_kne1u")
+surface_material_override/0 = SubResource("StandardMaterial3D_e80uo")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6007, 1.38149)
+spring_length = 4.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.976672, 0.214735, 0, -0.214735, 0.976672, 0, 0.325947, 0.309389)
+
+[node name="Area3D" type="Area3D" parent="SpringArm3D/Camera3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringArm3D/Camera3D/Area3D"]
+shape = SubResource("SphereShape3D_xhfnw")
+
+[node name="WeaponPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.642521, -0.205474, -0.458107)
+
+[node name="Weapon" type="MeshInstance3D" parent="WeaponPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152519, 0.392805, 0)
+mesh = SubResource("BoxMesh_cxr5p")
+
+[node name="RayCast3D" type="RayCast3D" parent="WeaponPivot/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00189906, 0.0860447, -0.49472)
+target_position = Vector3(0, 0, -100)
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
