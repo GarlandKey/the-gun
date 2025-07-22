@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2dwekbhaia1u"]
+[gd_scene load_steps=11 format=3 uid="uid://d2dwekbhaia1u"]
 
 [ext_resource type="PackedScene" uid="uid://b4p1l5m2n3o4p" path="res://UI/crosshair.tscn" id="1_6v0ns"]
 [ext_resource type="PackedScene" uid="uid://bfmy0i5dqhhvy" path="res://Player/Scenes/player.tscn" id="2_6v0ns"]
 [ext_resource type="PackedScene" uid="uid://c6ftos1k82bwd" path="res://Enemies/Scenes/boomba.tscn" id="3_bn16w"]
+[ext_resource type="PackedScene" uid="uid://b8rhgwkyufx7k" path="res://Enemies/Scenes/pill_popper.tscn" id="3_g7qdh"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6v0ns"]
 
@@ -16,6 +17,13 @@ sky = SubResource("Sky_bn16w")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbv4u"]
 albedo_color = Color(0.239122, 0.143438, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bn16w"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuhxe"]
+albedo_color = Color(0.717647, 0.509804, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -32,12 +40,59 @@ environment = SubResource("Environment_g7qdh")
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 use_collision = true
-size = Vector3(128, 5, 128)
+size = Vector3(127, 5, 128)
 material = SubResource("StandardMaterial3D_rbv4u")
+
+[node name="BoombaRing" type="CSGTorus3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538181, -30.3352)
+inner_radius = 25.0
+outer_radius = 30.0
+sides = 64
+ring_sides = 32
+material = SubResource("StandardMaterial3D_bn16w")
+
+[node name="InnerWall1" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 7.5, 5)
+size = Vector3(32, 10, 1)
+material = SubResource("StandardMaterial3D_tuhxe")
+
+[node name="InnerWall2" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 7.5, 5)
+size = Vector3(32, 10, 1)
+material = SubResource("StandardMaterial3D_tuhxe")
+
+[node name="InnerWall3" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140682, 7.5, 25.9169)
+size = Vector3(32, 10, 1)
+material = SubResource("StandardMaterial3D_tuhxe")
+
+[node name="OutterWallEast" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 63.5, 7.5, 0)
+size = Vector3(128, 10, 1)
+material = SubResource("StandardMaterial3D_tuhxe")
+
+[node name="OutterWallWest" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -63.5, 7.5, 0)
+size = Vector3(127, 10, 1)
+material = SubResource("StandardMaterial3D_tuhxe")
+
+[node name="OutterWallNorth" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 7.5, -63.5)
+size = Vector3(127, 10, 1)
+material = SubResource("StandardMaterial3D_tuhxe")
+
+[node name="OutterWallSouth" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 7.5, 63.5)
+size = Vector3(127, 10, 1)
+material = SubResource("StandardMaterial3D_tuhxe")
 
 [node name="Crosshair" parent="." instance=ExtResource("1_6v0ns")]
 
 [node name="Player" parent="." instance=ExtResource("2_6v0ns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 55.9078)
 
+[node name="PillPopper" parent="." instance=ExtResource("3_g7qdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.252, 0, 2)
+
 [node name="Boomba" parent="." instance=ExtResource("3_bn16w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -30.3352)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dowx8movmlkvq"]
+[gd_scene load_steps=22 format=3 uid="uid://dowx8movmlkvq"]
 
 [ext_resource type="Material" uid="uid://c0mwr7ij87c8n" path="res://Levels/Materials/BoxBrownMaterial.tres" id="1_ntpbt"]
 [ext_resource type="Material" uid="uid://dq15nkct6thfs" path="res://Levels/Materials/ElectricBoxBlue.tres" id="1_waoec"]
@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://cty68mrr115og" path="res://Levels/Materials/WallLightGreyMaterial.tres" id="11_c1kre"]
 [ext_resource type="PackedScene" uid="uid://b4p1l5m2n3o4p" path="res://UI/crosshair.tscn" id="15_rpqvw"]
 [ext_resource type="PackedScene" uid="uid://bfmy0i5dqhhvy" path="res://Player/Scenes/player.tscn" id="15_w8hnd"]
+[ext_resource type="PackedScene" uid="uid://c6ftos1k82bwd" path="res://Enemies/Scenes/boomba.tscn" id="17_e88j7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2b7vw"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -1431,3 +1432,5 @@ material = ExtResource("4_43ny2")
 [node name="Crosshair" parent="." instance=ExtResource("15_rpqvw")]
 
 [node name="Player" parent="." instance=ExtResource("15_w8hnd")]
+
+[node name="Boomba" parent="." instance=ExtResource("17_e88j7")]
