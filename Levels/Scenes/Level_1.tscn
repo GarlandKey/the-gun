@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dowx8movmlkvq"]
+[gd_scene load_steps=21 format=3 uid="uid://dowx8movmlkvq"]
 
 [ext_resource type="Material" uid="uid://c0mwr7ij87c8n" path="res://Levels/Materials/BoxBrownMaterial.tres" id="1_ntpbt"]
 [ext_resource type="Material" uid="uid://dq15nkct6thfs" path="res://Levels/Materials/ElectricBoxBlue.tres" id="1_waoec"]
@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://dxlnqkt0i4ay" path="res://Levels/Materials/WallEchoesRedMaterial.tres" id="9_nmwl1"]
 [ext_resource type="Material" uid="uid://dbsfqbfhydse5" path="res://Levels/Materials/WallMediumGreyMaterial.tres" id="9_wpk6a"]
 [ext_resource type="Material" uid="uid://cty68mrr115og" path="res://Levels/Materials/WallLightGreyMaterial.tres" id="11_c1kre"]
+[ext_resource type="PackedScene" uid="uid://b4p1l5m2n3o4p" path="res://UI/crosshair.tscn" id="15_rpqvw"]
 [ext_resource type="PackedScene" uid="uid://bfmy0i5dqhhvy" path="res://Player/Scenes/player.tscn" id="15_w8hnd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2b7vw"]
@@ -1426,5 +1427,7 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 23.25, 1
 polygon = PackedVector2Array(0, -10, 15, -8, -14, -14)
 depth = 25.0
 material = ExtResource("4_43ny2")
+
+[node name="Crosshair" parent="." instance=ExtResource("15_rpqvw")]
 
 [node name="Player" parent="." instance=ExtResource("15_w8hnd")]
