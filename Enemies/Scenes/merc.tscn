@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8rhgwkyufx7k"]
 
-[ext_resource type="Script" uid="uid://dh1ayy6fu6trw" path="res://Enemies/Scripts/pill_popper.gd" id="1_gp2fp"]
+[ext_resource type="Script" uid="uid://dh1ayy6fu6trw" path="res://Enemies/Scripts/merc.gd" id="1_gp2fp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuhxe"]
 albedo_color = Color(0, 0.678431, 0, 1)
@@ -14,7 +14,7 @@ height = 3.0
 radius = 1.0
 height = 3.0
 
-[node name="PillPopper" type="CharacterBody3D"]
+[node name="Merc" type="CharacterBody3D"]
 script = ExtResource("1_gp2fp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

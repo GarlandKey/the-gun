@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://8p12waob5cwj"]
+
+[ext_resource type="Script" uid="uid://7ckvbk0i4p86" path="res://Enemies/Scripts/tank.gd" id="1_c1um5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_io31k"]
+albedo_color = Color(0.47, 0, 0.101833, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4tjgu"]
+material = SubResource("StandardMaterial3D_io31k")
+radius = 2.0
+height = 6.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c1um5"]
+radius = 2.0
+height = 6.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_io31k"]
+radius = 2.0
+height = 6.0
+
+[node name="Tank" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("1_c1um5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_4tjgu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_c1um5")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_io31k")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
