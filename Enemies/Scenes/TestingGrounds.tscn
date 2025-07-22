@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2dwekbhaia1u"]
+[gd_scene load_steps=12 format=3 uid="uid://d2dwekbhaia1u"]
 
 [ext_resource type="PackedScene" uid="uid://b4p1l5m2n3o4p" path="res://UI/crosshair.tscn" id="1_6v0ns"]
 [ext_resource type="PackedScene" uid="uid://bfmy0i5dqhhvy" path="res://Player/Scenes/player.tscn" id="2_6v0ns"]
+[ext_resource type="PackedScene" uid="uid://c6ftos1k82bwd" path="res://Enemies/Scenes/boomba.tscn" id="3_bn16w"]
+[ext_resource type="PackedScene" uid="uid://b8rhgwkyufx7k" path="res://Enemies/Scenes/merc.tscn" id="3_g7qdh"]
 [ext_resource type="PackedScene" uid="uid://8p12waob5cwj" path="res://Enemies/Scenes/tank.tscn" id="5_tuhxe"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6v0ns"]
@@ -92,3 +94,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 55.9078)
 
 [node name="Tank" parent="." instance=ExtResource("5_tuhxe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181808, 3, 12.7877)
+
+[node name="Merc" parent="." instance=ExtResource("3_g7qdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.3197, 0, 0)
+
+[node name="Merc2" parent="." instance=ExtResource("3_g7qdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4389, 0, 0)
+
+[node name="Boomba" parent="." instance=ExtResource("3_bn16w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -30)
