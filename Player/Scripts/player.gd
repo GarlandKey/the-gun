@@ -3,8 +3,8 @@ extends CharacterBody3D
 @export var mouse_sensitivity := 0.001
 @export var camera_distance := 5.0
 @onready var camera_pivot: Node3D = $CameraPivot
-@onready var camera: Camera3D = $CameraPivot/Camera3D
-@onready var aim_raycast: RayCast3D = $CameraPivot/Camera3D/AimRayCast
+@onready var camera: Camera3D = $CameraPivot/SpringArm3D/Camera3D
+@onready var aim_raycast: RayCast3D = $CameraPivot/SpringArm3D/Camera3D/AimRayCast
 
 # Bullet scene to spawn
 const BULLET_SCENE = preload("res://Bullets/Scenes/bullet.tscn")
