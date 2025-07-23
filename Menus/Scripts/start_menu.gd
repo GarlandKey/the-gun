@@ -13,4 +13,4 @@ func _input(event):
 
 func transition_to_game():
 	# Change to the TestingGrounds scene
-	get_tree().change_scene_to_file("res://Enemies/Scenes/TestingGrounds.tscn")
+	get_tree().change_scene_to_file("res://Levels/Scenes/TestingGrounds.tscn")

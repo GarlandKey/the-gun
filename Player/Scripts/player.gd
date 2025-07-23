@@ -9,6 +9,9 @@ extends CharacterBody3D
 # Bullet scene to spawn
 const BULLET_SCENE = preload("res://Bullets/Scenes/bullet.tscn")
 const CROSSHAIR_SCENE = preload("res://UI/crosshair.tscn")
+const PAUSE_MENU_SCENE = preload("res://Menus/Scenes/pause_menu.tscn")
+
+var pause_menu: Control
 
 const SPEED = 10.0
 const RUN_SPEED = 20.0
@@ -26,10 +29,19 @@ func _ready():
 	# Add crosshair to the UI
 	var crosshair = CROSSHAIR_SCENE.instantiate()
 	get_tree().current_scene.add_child(crosshair)
+	
+	# Add pause menu to the UI with CanvasLayer for proper input handling
+	var canvas_layer = CanvasLayer.new()
+	canvas_layer.layer = 100  # High layer to ensure it's on top
+	get_tree().current_scene.add_child(canvas_layer)
+	
+	pause_menu = PAUSE_MENU_SCENE.instantiate()
+	canvas_layer.add_child(pause_menu)
 
 func _input(event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
+	
 	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
@@ -73,7 +85,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	move_and_slide()
