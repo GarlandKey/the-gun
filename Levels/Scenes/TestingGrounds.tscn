@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2dwekbhaia1u"]
+[gd_scene load_steps=15 format=3 uid="uid://d2dwekbhaia1u"]
 
 [ext_resource type="PackedScene" uid="uid://b4p1l5m2n3o4p" path="res://UI/crosshair.tscn" id="1_6v0ns"]
+[ext_resource type="Script" uid="uid://dbrhkhgilelxi" path="res://Levels/Scripts/testing_grounds.gd" id="1_mgtkb"]
 [ext_resource type="PackedScene" uid="uid://bfmy0i5dqhhvy" path="res://Player/Scenes/player.tscn" id="2_6v0ns"]
 [ext_resource type="PackedScene" uid="uid://c6ftos1k82bwd" path="res://Enemies/Scenes/boomba.tscn" id="3_bn16w"]
 [ext_resource type="PackedScene" uid="uid://b8rhgwkyufx7k" path="res://Enemies/Scenes/merc.tscn" id="3_g7qdh"]
 [ext_resource type="PackedScene" uid="uid://8p12waob5cwj" path="res://Enemies/Scenes/tank.tscn" id="5_tuhxe"]
+[ext_resource type="PackedScene" uid="uid://bvluwbem36ugt" path="res://Menus/Scenes/pause_menu.tscn" id="6_yajdn"]
+[ext_resource type="Script" uid="uid://dj2pg288hmkta" path="res://Menus/Scripts/pause_node.gd" id="9_5bl0s"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6v0ns"]
 
@@ -27,6 +30,10 @@ albedo_color = Color(1, 0, 0, 1)
 albedo_color = Color(0.717647, 0.509804, 1, 1)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_mgtkb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g7qdh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.5, -2.18557e-08, 0, -4.37114e-08, 1, -0.5, 0.866025, 3.78552e-08, 0, 0, 0)
@@ -35,8 +42,32 @@ light_energy = 8.0
 light_angular_distance = 0.5
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_g7qdh")
+[node name="Crosshair" parent="." instance=ExtResource("1_6v0ns")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_yajdn")]
+process_mode = 0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseNode" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("9_5bl0s")
+
+[node name="Player" parent="." instance=ExtResource("2_6v0ns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 55.9078)
+
+[node name="Boomba" parent="." instance=ExtResource("3_bn16w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -30)
+
+[node name="Merc" parent="." instance=ExtResource("3_g7qdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.3197, 0, 0)
+
+[node name="Merc2" parent="." instance=ExtResource("3_g7qdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4389, 0, 0)
+
+[node name="Tank" parent="." instance=ExtResource("5_tuhxe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181808, 3, 12.7877)
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
@@ -86,20 +117,3 @@ material = SubResource("StandardMaterial3D_tuhxe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 7.5, 63.5)
 size = Vector3(127, 10, 1)
 material = SubResource("StandardMaterial3D_tuhxe")
-
-[node name="Crosshair" parent="." instance=ExtResource("1_6v0ns")]
-
-[node name="Player" parent="." instance=ExtResource("2_6v0ns")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 55.9078)
-
-[node name="Tank" parent="." instance=ExtResource("5_tuhxe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181808, 3, 12.7877)
-
-[node name="Merc" parent="." instance=ExtResource("3_g7qdh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.3197, 0, 0)
-
-[node name="Merc2" parent="." instance=ExtResource("3_g7qdh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4389, 0, 0)
-
-[node name="Boomba" parent="." instance=ExtResource("3_bn16w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -30)

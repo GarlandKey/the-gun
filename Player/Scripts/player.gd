@@ -9,7 +9,6 @@ extends CharacterBody3D
 # Bullet scene to spawn
 const BULLET_SCENE = preload("res://Bullets/Scenes/bullet.tscn")
 const CROSSHAIR_SCENE = preload("res://UI/crosshair.tscn")
-const PAUSE_MENU_SCENE = preload("res://Menus/Scenes/pause_menu.tscn")
 
 var pause_menu: Control
 
@@ -29,20 +28,11 @@ func _ready():
 	# Add crosshair to the UI
 	var crosshair = CROSSHAIR_SCENE.instantiate()
 	get_tree().current_scene.add_child(crosshair)
-	
-	# Add pause menu to the UI with CanvasLayer for proper input handling
-	var canvas_layer = CanvasLayer.new()
-	canvas_layer.layer = 100  # High layer to ensure it's on top
-	get_tree().current_scene.add_child(canvas_layer)
-	
-	pause_menu = PAUSE_MENU_SCENE.instantiate()
-	canvas_layer.add_child(pause_menu)
 
 func _input(event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
-	
-	
+		
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	
@@ -68,6 +58,8 @@ func _physics_process(delta: float) -> void:
 		
 		# Normal movement when not dashing
 		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		if input_dir != Vector2.ZERO:
+			print("Input detected: ", input_dir)
 		var direction: Vector3 = (camera_pivot.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		
 		# Check if running
